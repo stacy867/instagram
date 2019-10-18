@@ -1,0 +1,33 @@
+{%extends 'all-apps/base.html'%}
+
+ {% block content %}
+ <div class="container">
+<h1>welcome on instagram</h1>
+<div class="row">
+        {% for i in images %}
+        <p>{{i.user.username}}</p>
+           <img src="{{i.image.url}}"  class="img-responsive" alt="Image">
+           <p><strong>image caption</strong>{{i.image_caption}}</p>
+         </div>
+      
+         <div class="row">
+           <!-- <h1 class="text-center">{{article.title}}</h1> -->
+         </div>
+      
+         <div class="row">
+           {% autoescape on %}
+           {{i.post| safe}}
+          {% endautoescape %}
+          {% endfor %}
+      
+         </div>
+      
+         <!-- <div class="row">
+           <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
+         </div> -->
+      
+
+        
+     
+</div>
+{% endblock %}

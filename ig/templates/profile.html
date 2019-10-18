@@ -1,0 +1,34 @@
+{%extends 'all-apps/base.html'%}
+
+ {% block content %}
+ <div class="container">
+ <div class="row">
+     
+     <!-- {%if user%} -->
+        <img src="{{profile.profile_photo.url}}"  class="img-responsive" alt="Image">
+        <!-- {% endif %} -->
+        <p><strong>image caption</strong>{{i.image_caption}}</p>
+      </div>
+   
+      <div class="row">
+        <!-- <h1 class="text-center">{{article.title}}</h1> -->
+      </div>
+   
+      <div class="row">
+        {% autoescape on %}
+        {{i.post| safe}}
+       {% endautoescape %}
+       
+      
+
+       
+   
+      </div>
+   
+      <!-- <div class="row">
+        <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
+      </div> -->
+   
+    </div>
+   {% endblock %}
+ 
