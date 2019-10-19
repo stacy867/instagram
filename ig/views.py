@@ -1,15 +1,17 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import NewPostForm,NewProfileForm
-from .models import Image,Profile
+from .forms import NewPostForm,NewProfileForm,CommentForm
+from .models import Image,Profile,Comment
 
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
     images=Image.objects.all()
+    comments=Comment.objects.all()
+    current_user = request.user
     print(images)
-    return render(request, 'index.html',{"images":images})
+    return render(request, 'index.html',{"images":images,"comments":comments,"current_user":current_user})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -30,7 +32,7 @@ def new_post(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
      current_user= request.user
-     image=Image.objects.filter(user=current_user)
+     image=Image.objects.filter(user=current_user).all()
      profile= Profile.objects.filter(user=current_user).first()   
      return render(request,'profile.html',{"image":image,"profile":profile})     
 
@@ -74,4 +76,28 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-apps/search.html',{"message":message})
+
+def comment(request,image_id):
+    try:
+        comment = Comment.objects.get(id = image_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"index.html", {"comment":comment})        
+
+
+@login_required(login_url='/accounts/login/')
+def new_comment(request):
+   
+    current_user = request.user
+    if request.method == 'POST':
+        form =CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = current_user
+            comment.save()
+            return redirect('welcome') 
+
+    else:
+        form = CommentForm()
+    return render(request, 'all-apps/new_comment.html', {"form": form})                
 
