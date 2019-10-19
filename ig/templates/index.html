@@ -3,10 +3,14 @@
  {% block content %}
  <div class="container">
 
-<div class="row">
-        {% for i in images %}
+<div class="row ">
+    {% for i in images %}
+    <div class="card">
+        <div class="card-body" >
+  <div class="thumbnail"style= "width:100%">
+        
         <p>{{i.user.username}}</p>
-           <img src="{{i.image.url}}"  class="img-responsive" alt="Image">
+           <img style="height:30%; width:50%" src="{{i.image.url}}"  class="img img-responsive full-width" alt="img-responsive" data-toggle="modal">
            <p><strong>image caption</strong>{{i.image_caption}}</p>
            <p>{{i.comment.feedback}}</p>
            
@@ -19,26 +23,17 @@
                   <input class="add-comment" name="comment" id="comment{{i.id}}" type="text" placeholder="Add a comment....">
                   </form>
                   </div>
+                </div>  
+              </div>
+                      </div> 
                 
       
-         <div class="row">
-           <!-- <h1 class="text-center">{{article.title}}</h1> -->
-         </div>
-      
-         <div class="row">
-           {% autoescape on %}
-           {{i.post| safe}}
-          {% endautoescape %}
+        
           {% endfor %}
       
          </div>
       
-         <!-- <div class="row">
-           <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
-         </div> -->
-      
-
-        
+          
      
-</div>
+
 {% endblock %}

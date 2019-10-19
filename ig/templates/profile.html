@@ -2,11 +2,7 @@
 
  {% block content %}
 <style>
-  .container {
-    max-width: 93.5rem;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
+  
 .visually-hidden {
     position: absolute !important;
     height: 1px;
@@ -118,7 +114,7 @@
 
 </style>
 
- <header>
+
 
     <div class="container">
   
@@ -134,22 +130,22 @@
   
           <h1 class="profile-user-name">{{user.username}}</h1>
   
-          <button class="btn profile-edit-btn">Edit Profile</button>
+          <a href="{% url 'new-profile'%}"><button class="btn profile-edit-btn">Edit Profile</button></a>
   
           
   
         </div>
   
-        <div class="profile-stats">
+        <!-- <div class="profile-stats">
   
-          <!-- <ul>
+          <ul>
             <li><span class="profile-stat-count">164</span> posts</li>
             <li><span class="profile-stat-count">188</span> followers</li>
             <li><span class="profile-stat-count">206</span> following</li>
-          </ul> -->
+          </ul>
   
         </div>
-  
+   -->
         <div class="profile-bio">
   
           <p><span class="profile-real-name">{{user.username}}' bio:</span> {{profile.bio}}</p>

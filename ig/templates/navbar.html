@@ -7,41 +7,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <!-- <div class="container"> -->
+    <div class="container">
     <nav style="background-color: white;text-align:center"class=" navbar-inverse">
         <div class="container"style="align-text:center">
           <div class="navbar-header">
-              <img src="https://www.sketchappsources.com/resources/source-image/instagram-logo-sketch.png" height=80 style="border-right: 1px solid black;height:40px">
+              <a ><img src="https://www.sketchappsources.com/resources/source-image/instagram-logo-sketch.png" height=80 style="border-right: 1px solid black;height:40px"></a>
          
-            <span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png"height=60>
+            <span><a href="{%url 'welcome'%}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png"height=60></a>
             </span>
 
-   <form  action="{% url 'search_results' %}"class="col-sm-4 col-md-4 navbar-right" style="margin-top: 4%; margin-left:10%">
-         <input  type="text" class="input-sm form-control" name="username"
-         placeholder="Search">
-   </form>
-   <span>
-  
-  </span>            
+           
+         <div class="col-sm-4 col-md-4 navbar-right" style="margin-top: 4%; margin-right:5%"> <form  action="{% url 'search_results' %}">
+            {% csrf_token %}
+            <input  type="text" class="input-sm form-control" name="username"
+            placeholder="Search">
+      </form></div>
+             
           
           <!-- <ul class="col-sm-4 col-md-4  navbar-right"> -->
               
           
           </div>
+          
           <a href="{% url 'profile'%}"><img src="https://cdn1.iconfinder.com/data/icons/instagram-ui-glyph/48/Sed-01-512.png"style="margin-top: 0.5%; margin-left:5%" height=50></a>
-          <a href="{% url 'profile'%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png"style="margin-top: 0.5%; margin-left:1%" height=50></a>
+          <a href="{% url 'profile'%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png"style="margin-top: 0.5%; margin-left:1.1%" height=50></a>
            
-          <div class="col-sm-4 col-md-4 "style="margin-top: 1.8%; margin-left:5%;">
+          <div style="margin-top:-3.6%; margin-right:-25%;">
                 {% if user.is_authenticated %}
                
                   <div class= "dropdown">
-                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                            
+                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  aria-expanded="false">
+                            <img src="https://i.imgur.com/i9lEjPG.png"height=20>
                           </a>
                     <div class="dropdown-menu" role="menu">
-                      <p>
-                        <a href="{%url 'welcome'%}">Home</a>
-                      </p>
+                      
                       <p>
                         <a href="/accounts/password/change">Change Password</a>
                       </p>
@@ -65,7 +64,7 @@
                 {% endif %}
                
               </div>  
-          
+           
         </div>
         
          
