@@ -1,4 +1,4 @@
-from .models import Image,Profile
+from .models import Image,Profile,Comment
 from django import forms
 
 class NewPostForm(forms.ModelForm):
@@ -13,6 +13,9 @@ class NewProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user_id_id']
-        # widgets = {
-        #     'likes': forms.CheckboxSelectMultiple(),
-        # }        
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ['user','image']        
+        
