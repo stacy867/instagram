@@ -28,7 +28,7 @@ class Profile(models.Model):
     def search_by_profile(cls,username):
         certain_user = cls.objects.filter(user_id__username__icontains=username)
         # profile = Profile.objects.filter(user__username__icontains=name)
-        return  certain_user     
+        return  certain_user    
 
 class Image(models.Model):
     image = models.ImageField(upload_to ='images/',null=True)
