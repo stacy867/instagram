@@ -60,7 +60,7 @@ class Image(models.Model):
 
 class Comment(models.Model):
     feedback= models.CharField(max_length =30,null=True)
-    user_id=models.ForeignKey(User,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
     image=models.ForeignKey(Image,null=True)
 
     def __str__(self):
