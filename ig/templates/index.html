@@ -2,13 +2,24 @@
 
  {% block content %}
  <div class="container">
-<h1>welcome on instagram</h1>
+
 <div class="row">
         {% for i in images %}
         <p>{{i.user.username}}</p>
            <img src="{{i.image.url}}"  class="img-responsive" alt="Image">
            <p><strong>image caption</strong>{{i.image_caption}}</p>
-         </div>
+           <p>{{i.comment.feedback}}</p>
+           
+              
+           <div class="comment-input-wrapper">
+              {{form.media}}
+              <form action="{% url 'new-comment'  %}" method="post">
+                {% csrf_token %}
+                
+                  <input class="add-comment" name="comment" id="comment{{i.id}}" type="text" placeholder="Add a comment....">
+                  </form>
+                  </div>
+                
       
          <div class="row">
            <!-- <h1 class="text-center">{{article.title}}</h1> -->

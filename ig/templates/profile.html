@@ -1,34 +1,193 @@
 {%extends 'all-apps/base.html'%}
 
  {% block content %}
- <div class="container">
- <div class="row">
-     
-     <!-- {%if user%} -->
-        <img src="{{profile.profile_photo.url}}"  class="img-responsive" alt="Image">
-        <!-- {% endif %} -->
-        <p><strong>image caption</strong>{{profile.bio}}</p>
-      </div>
-   
-      <div class="row">
-        <!-- <h1 class="text-center">{{article.title}}</h1> -->
-      </div>
-   
-      <div class="row">
-        {% autoescape on %}
-        {{i.post| safe}}
-       {% endautoescape %}
-       
-      
+<style>
+  .container {
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+.profile {
+    padding: 5rem 0;
+}
 
-       
-   
+.profile::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.profile-image {
+    float: left;
+    width: calc(33.333% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+.profile-image img {
+    border-radius: 50%;
+}
+
+.profile-user-settings,
+.profile-stats,
+.profile-bio {
+    float: left;
+    width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings {
+    margin-top: 1.1rem;
+}
+
+.profile-user-name {
+    display: inline-block;
+    font-size: 3.2rem;
+    font-weight: 300;
+}
+
+.profile-edit-btn {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 0 2.4rem;
+    margin-left: 2rem;
+}
+
+.profile-settings-btn {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.profile-stats {
+    margin-top: 2.3rem;
+}
+
+.profile-stats li {
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-right: 4rem;
+    cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+    margin-right: 0;
+}
+
+.profile-bio {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+    font-weight: 600;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem -1rem;
+    padding-bottom: 3rem;
+}
+.gallery-item {
+    position: relative;
+    flex: 1 0 22rem;
+    margin: 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+
+    
+
+
+
+</style>
+
+ <header>
+
+    <div class="container">
+  
+      <div class="profile">
+  
+        <div class="profile-image">
+  
+            <img src="{{profile.profile_photo.url}}"  class="img-responsive" alt="Image">
+  
+        </div>
+  
+        <div class="profile-user-settings">
+  
+          <h1 class="profile-user-name">{{user.username}}</h1>
+  
+          <button class="btn profile-edit-btn">Edit Profile</button>
+  
+          
+  
+        </div>
+  
+        <div class="profile-stats">
+  
+          <!-- <ul>
+            <li><span class="profile-stat-count">164</span> posts</li>
+            <li><span class="profile-stat-count">188</span> followers</li>
+            <li><span class="profile-stat-count">206</span> following</li>
+          </ul> -->
+  
+        </div>
+  
+        <div class="profile-bio">
+  
+          <p><span class="profile-real-name">{{user.username}}' bio:</span> {{profile.bio}}</p>
+  
+        </div>
+  
       </div>
-   
-      <!-- <div class="row">
-        <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
-      </div> -->
-   
+      <!-- End of profile section -->
+  
     </div>
+    <!-- End of container -->
+    <div class="gallery">
+       
+    <div class="container">
+        
+      <div class="row masonry-container">
+          {%for i in image %}
+          <div class="item col-md-4">
+              <div class="well">
+            
+          <div class="thumbnail"style="background-color:white">
+              
+          
+             
+    
+            <img src="{{i.image.url}}"  class=" img-responsive" alt="">
+  
+             <!-- </div>
+            </div> -->
+            </div>
+          </div>
+          </div>
+          {% endfor %}
+          </div>
+        </div>
+        
+  
+  </header>
+ 
    {% endblock %}
  
