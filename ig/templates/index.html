@@ -8,8 +8,12 @@
     <div class="card">
         <div class="card-body" >
   <div class="thumbnail"style= "height:30%">
+      
+        <img src="{{profile.profile_photo.url}}" class="rounded-circle mr-3" height=70 width=50 alt="avatar" style="margin-right:100%;border:1px solid black;border-radius:50px">
         
-        <p>{{i.user.username}}</p>
+        <!-- <p>{{i.user.username}}</p> -->
+      
+      
            <img style="height:30%; width:50%" src="{{i.image.url}}"  class="img img-responsive full-width" alt="img-responsive" data-toggle="modal">
            <span>
               <a href="{% url 'like' id=i.id%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png" style="margin-top: 0.5%; margin-right:100%"  width=40></a>
@@ -29,15 +33,20 @@
                   <input class="add-comment" name="comment" id="comment{{i.id}}" type="text" placeholder="Add a comment....">
                   </form>
                   </div>
-                </div>  
+                </div> 
+                
               </div>
                       </div> 
+                      
                 
-      
+              
         
           {% endfor %}
       
          </div>
+         </div>
+       
+         
       
           
      
