@@ -9,6 +9,7 @@ from .models import Image,Profile,Comment
 def welcome(request):
     images=Image.objects.all()
     comments=Comment.objects.all()
+
     current_user = request.user
     print(images)
     return render(request, 'index.html',{"images":images,"comments":comments,"current_user":current_user})
@@ -101,3 +102,12 @@ def new_comment(request):
         form = CommentForm()
     return render(request, 'all-apps/new_comment.html', {"form": form})                
 
+# @login_required(login_url='/accounts/login/')
+def likes(request,id):
+    
+    likes=1
+    image = Image.objects.get(id=id)
+    image.likes = image.likes+1
+    image.save()    
+    return redirect("/")
+  
