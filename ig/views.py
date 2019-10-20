@@ -9,10 +9,12 @@ from .models import Image,Profile,Comment
 def welcome(request):
     images=Image.objects.all()
     comments=Comment.objects.all()
+    current_user=request.user
+    profile= Profile.objects.filter(user=current_user).first()
 
     current_user = request.user
     print(images)
-    return render(request, 'index.html',{"images":images,"comments":comments,"current_user":current_user})
+    return render(request, 'index.html',{"images":images,"comments":comments,"current_user":current_user,"profile":profile})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
