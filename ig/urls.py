@@ -12,6 +12,7 @@ urlpatterns=[
     url(r'^new/newprofile$', views.new_profile, name='new-profile'),
     url(r'^new/profile$', views.profile, name='profile'),
     url(r'^post/(\d+)',views.post,name ='post'),
+    url(r'^likes/(?P<id>\d+)',views.likes,name ='like'),
     url(r'^search/', views.search_results, name='search_results')
 ]
 if settings.DEBUG:
