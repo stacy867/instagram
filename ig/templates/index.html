@@ -7,12 +7,18 @@
     {% for i in images %}
     <div class="card">
         <div class="card-body" >
-  <div class="thumbnail"style= "width:100%">
+  <div class="thumbnail"style= "height:30%">
         
         <p>{{i.user.username}}</p>
            <img style="height:30%; width:50%" src="{{i.image.url}}"  class="img img-responsive full-width" alt="img-responsive" data-toggle="modal">
-           <p><strong>image caption</strong>{{i.image_caption}}</p>
+           <span>
+              <a href="{% url 'like' id=i.id%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png" style="margin-top: 0.5%; margin-right:100%"  width=40></a>
+           </span>
+           <p><strong>{{i.likes}} likes</strong></p>
+           <p><strong>{{i.user.username}}</strong>{{i.image_caption}}</p>
+
            <p>{{i.comment.feedback}}</p>
+           
            
               
            <div class="comment-input-wrapper">
