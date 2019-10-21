@@ -54,7 +54,12 @@ class Image(models.Model):
     
     def update_caption(self):
         caption=self.image_caption.update()
-        return caption    
+        return caption 
+    @classmethod
+    def get_images(cls):
+        image=cls.objects.all().prefetch_related('comment_set')
+        return image       
+        # from Aristote..
 
 
 
