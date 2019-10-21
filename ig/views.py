@@ -7,14 +7,14 @@ from .models import Image,Profile,Comment
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
-    images=Image.objects.all()
-    comments=Comment.objects.all()
     current_user=request.user
+    images=Image.get_images()
+    comment=Comment.objects.filter(id=current_user.id).first()
     profile= Profile.objects.filter(user=current_user).first()
 
-    current_user = request.user
+    
     print(images)
-    return render(request, 'index.html',{"images":images,"comments":comments,"current_user":current_user,"profile":profile})
+    return render(request, 'index.html',{"images":images,"comment":comment,"current_user":current_user,"profile":profile})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -89,22 +89,25 @@ def comment(request,image_id):
 
 
 @login_required(login_url='/accounts/login/')
-def new_comment(request):
+def new_comment(request,image_id):
    
     current_user = request.user
+    image= Image.objects.filter(id=image_id).first()
+    profile=Profile.objects.filter(user=current_user.id).first()
     if request.method == 'POST':
         form =CommentForm(request.POST, request.FILES)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.user = current_user
+            comment.image=image
             comment.save()
             return redirect('welcome') 
 
     else:
         form = CommentForm()
-    return render(request, 'all-apps/new_comment.html', {"form": form})                
+    return render(request, 'all-apps/new_comment.html', {"form": form,"image":image,"image_id":image_id})                
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def likes(request,id):
     
     likes=1
