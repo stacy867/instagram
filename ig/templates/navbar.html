@@ -24,46 +24,45 @@
       </form></div>
              
           
-          <!-- <ul class="col-sm-4 col-md-4  navbar-right"> -->
+     
+            
               
           
           </div>
+          <a href="{% url 'profile'%}"><img src="https://cdn1.iconfinder.com/data/icons/instagram-ui-glyph/48/Sed-01-512.png"style="margin-top: 0.5%; margin-left:5%" height=50></a> 
           
-          <a href="{% url 'profile'%}"><img src="https://cdn1.iconfinder.com/data/icons/instagram-ui-glyph/48/Sed-01-512.png"style="margin-top: 0.5%; margin-left:5%" height=50></a>
-          <a href="{% url 'profile'%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png"style="margin-top: 0.5%; margin-left:1.1%" height=50></a>
+         
+          <!-- <a href="{% url 'profile'%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png"style="margin-top: 0.5%; margin-left:1.1%" height=50></a> -->
            
-          <div style="margin-top:-3.6%; margin-right:-25%;">
-                {% if user.is_authenticated %}
-               
-                  <div class= "dropdown">
-                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  aria-expanded="false">
-                            <img src="https://i.imgur.com/i9lEjPG.png"height=20>
-                          </a>
-                    <div class="dropdown-menu" role="menu">
-                      
-                      <p>
-                        <a href="/accounts/password/change">Change Password</a>
-                      </p>
-                      <p>
-                        <a href="{% url 'new-profile'%}">Create profile</a>
-                      </p>
-                      <p>
-                        <a href="{% url 'new-post'%}">upload image </a>
-                          </p>
-                      <p>
-                        <a href="/logout">Logout</a>
-                      </p>
+           
+          <div style="margin-top:-3.5%; margin-right:-25%;">
+              {% if user.is_authenticated %}
+             
+                <div class= "dropdown">
+                  <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  aria-expanded="false">
+                          <img src="https://i.imgur.com/i9lEjPG.png" height=20>
+                        </a>
+                  <div class="dropdown-menu" role="menu">
+                    
+                    <p>
+                      <a href="/accounts/password/change">Change Password</a>
+                    </p>
                    
-                    </div>
-               
-                {% else %}
-                <li>
-                  <a class='btn btn-default' href="/accounts/login">Login</a>
-                </div>
-    
-                {% endif %}
-               
-              </div>  
+                   
+                    <p>
+                      <a href="/logout">Logout</a>
+                    </p>
+                 
+                  </div>
+             
+              {% else %}
+              <li>
+                <a class='btn btn-default' href="/accounts/login">Login</a>
+              </div>
+  
+              {% endif %}
+             
+            </div>
            
         </div>
         

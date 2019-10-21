@@ -1,6 +1,7 @@
 {%extends 'all-apps/base.html'%}
 
  {% block content %}
+ <!-- From google for more information please visit this site "https://codepen.io/GeorgePark/pen/VXrwOP" -->
 <style>
   
 .visually-hidden {
@@ -131,21 +132,13 @@
           <h1 class="profile-user-name">{{user.username}}</h1>
   
           <a href="{% url 'new-profile'%}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+          <a href="{% url 'new-post'%}"><button class="btn profile-edit-btn">Upload Image</button></a>
   
           
   
         </div>
   
-        <!-- <div class="profile-stats">
-  
-          <ul>
-            <li><span class="profile-stat-count">164</span> posts</li>
-            <li><span class="profile-stat-count">188</span> followers</li>
-            <li><span class="profile-stat-count">206</span> following</li>
-          </ul>
-  
-        </div>
-   -->
+        
         <div class="profile-bio">
   
           <p><span class="profile-real-name">{{user.username}}' bio:</span> {{profile.bio}}</p>

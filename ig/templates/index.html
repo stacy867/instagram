@@ -16,22 +16,22 @@
       
            <img style="height:30%; width:50%" src="{{i.image.url}}"  class="img img-responsive full-width" alt="img-responsive" data-toggle="modal">
            <span>
-              <a href="{% url 'like' id=i.id%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png" style="margin-top: 0.5%; margin-right:100%"  width=40></a>
+              
+              <a href="{% url 'like' id=i.id%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png" style="margin-bottom:-2%; margin-right:100%"  width=40></a>
+              <a href="{% url 'new-comment' i.id%}" ><img src="https://www.trzcacak.rs/myfile/detail/157-1577286_circular-speech-bubble-outline-comments-instagram-comment-logo.png" style="margin-top:-2.9%;margin-right:93%"width=25></a>
            </span>
            <p><strong>{{i.likes}} likes</strong></p>
            <p><strong>{{i.user.username}}</strong>{{i.image_caption}}</p>
-
-           <p>{{i.comment.feedback}}</p>
-           
+          
+            {% for c in i.comment_set.all %}
+            <span><p><strong>{{current_user.username}}:</strong>{{c.feedback}}</p></span>
+           {% endfor %}
            
               
            <div class="comment-input-wrapper">
-              {{form.media}}
-              <form action="{% url 'new-comment'  %}" method="post">
-                {% csrf_token %}
-                
-                  <input class="add-comment" name="comment" id="comment{{i.id}}" type="text" placeholder="Add a comment....">
-                  </form>
+            
+              
+              
                   </div>
                 </div> 
                 
