@@ -67,18 +67,18 @@ def post(request,image_id):
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):
-    if 'username' in request.GET and request.GET["username"]:
-        search_term = request.GET.get("username")
-        # searched_profiles = User.objects.filter(username__icontains=search_term)
-
-        searched_users = Profile.search_by_profile(search_term)
-        print(searched_users)
-        message = f"{search_term}"
-
-        return render(request, "all-apps/search.html",{"message":message,"users": searched_users})
-    else:
-        message = "You haven't searched for any term"
-        return render(request, 'all-apps/search.html',{"message":message})
+   if 'username' in request.GET and request.GET["username"]:
+       search_term = request.GET.get("username")
+       # searched_profiles = User.objects.filter(username__icontains=search_term)
+       searched_users = Profile.search_by_profile(search_term)
+       current_user = request.user
+       profile=Profile.objects.filter(user=current_user).first()
+       print(searched_users)
+       message = f"{search_term}"
+       return render(request, "all-apps/search.html",{"message":message,"users": searched_users,"profile":profile})
+   else:
+       message = "You haven't searched for any term"
+       return render(request, 'all-apps/search.html',{"message":message})
 
 def comment(request,image_id):
     try:

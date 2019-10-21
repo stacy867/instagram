@@ -26,7 +26,7 @@ class Profile(models.Model):
         
     @classmethod
     def search_by_profile(cls,username):
-        certain_user = cls.objects.filter(user_id__username__icontains=username)
+        certain_user = cls.objects.filter(user__username__icontains=username)
         # profile = Profile.objects.filter(user__username__icontains=name)
         return  certain_user    
 

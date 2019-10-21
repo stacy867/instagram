@@ -1,30 +1,32 @@
 {%extends 'all-apps/base.html'%}
 
  {% block content %}
+ {% for i in images %}
  <div class="container">
 
 <div class="row ">
-    {% for i in images %}
+   
     <div class="card">
         <div class="card-body" >
-  <div class="thumbnail"style= "height:30%">
+  <div class="thumbnail" style= " margin-left:20%;height:30%;width:60%">
       
-        <img src="{{profile.profile_photo.url}}" class="rounded-circle mr-3" height=70 width=50 alt="avatar" style="margin-right:100%;border:1px solid black;border-radius:50px">
+        <img src="{{profile.profile_photo.url}}" class="rounded-circle mr-3" height=70 width=50 alt="avatar" style="margin-right:100%;border:1px solid black;border-radius:50%">
         
         <!-- <p>{{i.user.username}}</p> -->
       
       
-           <img style="height:30%; width:50%" src="{{i.image.url}}"  class="img img-responsive full-width" alt="img-responsive" data-toggle="modal">
-           <span>
+           <img style="height:30%; width:50%" src="{{i.image.url}}"  class=" img-responsive" alt="img-responsive" data-toggle="modal">
+           
               
-              <a href="{% url 'like' id=i.id%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png" style="margin-bottom:-2%; margin-right:100%"  width=40></a>
-              <a href="{% url 'new-comment' i.id%}" ><img src="https://www.trzcacak.rs/myfile/detail/157-1577286_circular-speech-bubble-outline-comments-instagram-comment-logo.png" style="margin-top:-2.9%;margin-right:93%"width=25></a>
-           </span>
+              <a href="{% url 'like' id=i.id%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png" style="margin-bottom:10%; margin-right:100%;position:absolute"  width=40></a>
+              <a href="{% url 'new-comment' i.id%}" ><img src="https://www.trzcacak.rs/myfile/detail/157-1577286_circular-speech-bubble-outline-comments-instagram-comment-logo.png" style="margin-left:3%;margin-top:0.5%;position:absolute"width=25></a>
+           <div style="margin-top:5%">
            <p><strong>{{i.likes}} likes</strong></p>
            <p><strong>{{i.user.username}}</strong>{{i.image_caption}}</p>
           
             {% for c in i.comment_set.all %}
             <span><p><strong>{{current_user.username}}:</strong>{{c.feedback}}</p></span>
+          </div>
            {% endfor %}
            
               
