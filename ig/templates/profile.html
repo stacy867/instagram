@@ -118,6 +118,7 @@
 
 
     <div class="container">
+        
   
       <div class="profile">
   
@@ -141,7 +142,7 @@
         
         <div class="profile-bio">
   
-          <strong class="profile-real-name">{{user.username}}' bio:</strong> {{profile.bio}}
+          <strong class="profile-real-name">{{user.username}}<br></strong> {{profile.bio}}
   
         </div>
   
@@ -165,6 +166,11 @@
              
     
             <img src="{{i.image.url}}"  class=" img-responsive" alt="">
+            <p>{{i.user.username}}</p>
+            <p><strong>likes:</strong>{{i.likes}}</p>
+            {% for c in i.comment_set.all %}
+                   <p><strong>{{profile.user.username}}</strong>{{c.feedback}}</p>
+                  {%endfor%}
   
              <!-- </div>
             </div> -->
@@ -173,6 +179,7 @@
           </div>
           {% endfor %}
           </div>
+        
         </div>
         
   

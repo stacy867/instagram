@@ -6,9 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-    <div class="container">
-    <nav style="background-color: black;text-align:center"class=" navbar-inverse">
+<body >
+    <!-- <div class="container"> -->
+    <nav style="background-color: white;text-align:center;padding:2%"class=" navbar-inverse">
         <div class="container"style="align-text:center">
           <div class="navbar-header">
               <a ><img src="https://www.sketchappsources.com/resources/source-image/instagram-logo-sketch.png" height=80 style="border-right: 1px solid black;height:40px"></a>
@@ -16,23 +16,16 @@
             <span><a href="{%url 'welcome'%}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png"height=60></a>
             </span>
 
-           
-         
-          
-     
-            
-              
-          
           </div>
 
           <form class="form-inline"style="margin-top: 1%; margin-left:10%" action="{% url 'search_results' %}">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="username">
-              <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+            
             </form>
           <a href="{% url 'profile'%}"><img src="https://cdn1.iconfinder.com/data/icons/instagram-ui-glyph/48/Sed-01-512.png"style="margin-top:-5%; margin-right:-35%" height=50></a> 
           
          
-          <!-- <a href="{% url 'profile'%}"><img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-68-512.png"style="margin-top: 0.5%; margin-left:1.1%" height=50></a> -->
+          
            
            
           <div style="margin-top:-5%; margin-right:-50%">
@@ -68,6 +61,8 @@
         
          
       </nav>
+
+
 
     </div> 
 </body>

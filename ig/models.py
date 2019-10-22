@@ -7,7 +7,7 @@ from tinymce.models import HTMLField
     
 
 class Profile(models.Model):
-    # bio= models.CharField(max_length =30,null=True)
+    
     bio= HTMLField()
     profile_photo=models.ImageField(upload_to ='photos/',null=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE) 
@@ -81,9 +81,9 @@ class Comment(models.Model):
     def update_comment(self):
         self.update()           
 
-class Follow(models.Model):
-    profile= models.ForeignKey(Profile,null=True)
-    user_id=models.ForeignKey(User,on_delete=models.CASCADE)
+# class Follow(models.Model):
+#     profile= models.ForeignKey(Profile,null=True)
+#     user_id=models.ForeignKey(User,on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.profile          
+#     def __str__(self):
+#         return self.profile          
